@@ -26,5 +26,13 @@ class ApplicationSpec extends Specification {
       contentType(home) must beSome.which(_ == "text/html")
       contentAsString(home) must contain ("Your new application is ready.")
     }
+
+    "return an image for valid LaTeX" in new WithApplication{
+      val tex = "E=\\frac{m_1v^2}{2}"
+      val anyJax = route(FakeRequest(GET, "/"+tex)).get
+      status(anyJax) must equalTo(OK)
+      contentType(anyJax) must beSome.which(_ == "image/png")
+      // the title must contain the tex sent over
+    }
   }
 }
