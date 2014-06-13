@@ -1,3 +1,4 @@
+import java.net.URLEncoder._
 import org.specs2.mutable._
 import org.specs2.runner._
 import org.junit.runner._
@@ -14,11 +15,22 @@ class IntegrationSpec extends Specification {
 
   "Application" should {
 
-    "work from within a browser" in new WithBrowser {
+    if (false)
+      "work from within a browser with space-including LaTeX" in new WithBrowser {
 
-      browser.goTo("http://localhost:" + port)
+        val tex = encode("\\frac{Sales}{Traffic Out}", "UTF-8")
 
-//      browser.pageSource must contain("Your new application is ready.")
+        val sigh = 0x89
+        val pngByteHeader: List[Int] = List(0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a)
+        browser.goTo("http://localhost:" + port + "/" + tex)
+        //      browser.pageSource must contain("�PNG")
+      }
+
+    "work from within a browser given an already URL-encoded path" in new WithBrowser {
+      val urlEncodedTex = "%5Cf%0Crac%7BSales%7D%7BTraffic%20Out%7D"
+      browser.goTo("http://localhost:" + port + "/" + urlEncodedTex)
+      //      browser.pageSource must contain("�PNG")
     }
   }
+
 }

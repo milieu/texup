@@ -5,6 +5,7 @@ import org.junit.runner._
 import play.api.test._
 import play.api.test.Helpers._
 import java.net.URLEncoder.encode
+
 /**
  * Add your spec here.
  * You can mock out a whole application including requests, plugins etc.
@@ -15,32 +16,34 @@ class ApplicationSpec extends Specification {
 
   "Application" should {
 
-//    "send 404 on a bad request" in new WithApplication{
-//      route(FakeRequest(GET, "/boum")) must beNone
-//    }
-//
-//    "render the index page" in new WithApplication{
-//      val home = route(FakeRequest(GET, "/")).get
-//
-//      status(home) must equalTo(OK)
-//      contentType(home) must beSome.which(_ == "text/html")
-//      contentAsString(home) must contain ("Your new application is ready.")
-//    }
+    val Encoding: String = "UTF-8"
 
-    "return an image for valid LaTeX" in new WithApplication{
-      val tex = encode("E=\\frac{m_1v^2}{2}", "UTF-8")
-      val anyJax = route(FakeRequest(GET, "/"+tex)).get
-      status(anyJax) must equalTo(OK)
-      contentType(anyJax) must beSome.which(_ == "image/png")
-      // the title must contain the tex sent over
+    def imageCheckTest(desc: String, encodedTex: String) =
+      desc in new WithApplication() {
+        val anyJax = route(FakeRequest(GET, "/" + encodedTex)).get
+        status(anyJax) must equalTo(OK)
+        contentType(anyJax) must beSome.which(_ == "image/png")
+        // contentAsString(anyJax) must contain(tex)
+      }
+
+    imageCheckTest(
+      "return an image for URL-encoded valid LaTeX",
+      encode("E=\\frac{m_1v^2}{2}", Encoding))
+
+    imageCheckTest(
+      "return another image for URL-encoded valid LaTeX",
+      encode("\\frac{Sales}{Traffic Out}", Encoding))
+
+    if (false) {
+      imageCheckTest(
+        "return another image for raw URL-encoding",
+        "%5Cfrac%7BSales%7D%7BTraffic%20Out%7D")
     }
 
-    "return another image for valid LaTeX" in new WithApplication{
-      val tex = encode("\\frac{Sales}{Traffic Out}", "UTF-8")
-      val anyJax = route(FakeRequest(GET, "/"+tex)).get
-      status(anyJax) must equalTo(OK)
-      contentType(anyJax) must beSome.which(_ == "image/png")
-      // the title must contain the tex sent over
-    }
+    imageCheckTest(
+      "return an image for raw URL-encoding",
+      "%5Cfrac%7BSales%7D%7BTrafficOut%7D")
+
+
   }
 }
