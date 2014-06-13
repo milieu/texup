@@ -13,3 +13,11 @@ dist
 /.project
 /RUNNING_PID
 /.settings
+
+# Project generated files
+*.png*
+template.log
+template.pdf
+template.aux
+texput.log
+
