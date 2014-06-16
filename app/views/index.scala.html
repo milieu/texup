@@ -1,7 +1,38 @@
-@(message: String)
+@(hostaddress: String)
+@import java.net.URLEncoder.encode
+<!DOCTYPE html>
 
-@main("Welcome to Play") {
+<html>
+<head>
+    <title>Creating PNG images from LaTeX with minimal URLs</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap-3.1.1-dist/css/bootstrap.min.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("bootstrap-3.1.1-dist/js/bootstrap.min.js")" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>TexUp</h1>
+        <p>Easy LaTeX to PNG without embedding Javascript</p>
+    </div>
+    <div style="margin-left:3em;">
+        <p>
+            <h3>Given LaTeX:</h3>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => <code>\frac{a}{b}</code>
+        </p>
+            <h3>URL-encode the LaTeX with <a href="http://meyerweb.com/eric/tools/dencoder/">this site</a></h3>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => <code>%5Cfrac%7Ba%7D%7Bb%7D</code>
+        </p>
+        <p>
+            <h3>Access the LaTex PNG at:</h3>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =>
+            <a href="@{"http://"+hostaddress + "/" + encode("\\frac{a}{b}", "UTF-8")}">
+                <code>@{hostaddress + "/" + encode("\\frac{a}{b}", "UTF-8")}</code>
+            </a>
+        </p>
+    </div>
+</div>
+</body>
+</html>
 
-    @play20.welcome(message)
-
-}
