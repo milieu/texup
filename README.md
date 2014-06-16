@@ -19,7 +19,7 @@ The following assumes a 14.04 LTS Ubuntu environment.
 ##### LaTeX dependencies
 ```
     # LaTeX
-    sudo apt-get install texlive
+    apt-get install texlive
   
     # tlmgr
     git clone https://github.com/scottkosty/install-tl-ubuntu.git
