@@ -23,7 +23,7 @@ The following assumes a 14.04 LTS Ubuntu environment.
   
     # tlmgr
     git clone https://github.com/scottkosty/install-tl-ubuntu.git
-    ./install-tl-ubuntu
+    ./install-tl-ubuntu/install-tl-ubuntu
   
     # Tex packages
     # xzdec needed for the standalone package
