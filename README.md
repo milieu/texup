@@ -25,6 +25,8 @@ The following assumes a 14.04 LTS Ubuntu environment.
     git clone https://github.com/scottkosty/install-tl-ubuntu.git
     ./install-tl-ubuntu/install-tl-ubuntu
   
+    tlmgr init-usertree
+  
     # Tex packages
     # xzdec needed for the standalone package
     apt-get install xzdec
