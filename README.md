@@ -13,7 +13,7 @@ The following assumes a 14.04 LTS Ubuntu environment.
     play
    
     # If Java JDK not installed
-    sudo apt-get install openjdk-7-jdk
+    apt-get install openjdk-7-jdk
 ```
 
 ##### LaTeX dependencies
@@ -23,19 +23,19 @@ The following assumes a 14.04 LTS Ubuntu environment.
   
     # tlmgr
     git clone https://github.com/scottkosty/install-tl-ubuntu.git
-    sudo ./install-tl-ubuntu
+    ./install-tl-ubuntu
   
     # Tex packages
     # xzdec needed for the standalone package
-    sudo apt-get install xzdec
-    sudo tlmgr install standalone
-    sudo tlmgr install varwidth
+    apt-get install xzdec
+    tlmgr install standalone
+    tlmgr install varwidth
   
 ```
 
 ##### ImageMagick
 ```
-    sudo apt-get install imagemagick 
+    apt-get install imagemagick 
 ```
 
 ### Run!
