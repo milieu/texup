@@ -7,6 +7,7 @@ import scalax.io._
 import java.nio.file.{Paths, Files}
 import scala.sys.process._
 import java.io.File
+import java.net.URLEncoder.encode
 
 object Application extends Controller {
 
@@ -27,7 +28,7 @@ object Application extends Controller {
     assert(Files.exists(Paths.get(templateFileName)))
 
     val texString = "\\def\\formula{" + tex + "}\\input{" + templateFile.getAbsolutePath + "}"
-    val outputImageName = "images/" + tex.replaceAll("\\/ ", "_") + ".png"
+    val outputImageName = "images/" + encode(tex, "UTF-8") + ".png"
 
     val toPdf = Process("pdflatex " + texString) !!
 
