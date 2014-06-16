@@ -18,14 +18,14 @@ The following assumes a 14.04 LTS Ubuntu environment.
 
 ##### LaTeX dependencies
 ```
-    # LaTeX
-    apt-get install texlive
-  
-    # tlmgr
-    git clone https://github.com/scottkosty/install-tl-ubuntu.git
-    ./install-tl-ubuntu/install-tl-ubuntu
-  
+    # tlmgr http://www.tug.org/texlive/acquire-netinstall.html
+    curl -o install-tl-unx.tar.gz http://ctan.mirrors.hoobly.com/systems/texlive/tlnet/install-tl-unx.tar.gz
+    tar -zxvf install-tl-unx.tar.gz
+    install-tl-20140524/install-tl
+    sed -i '1i export PATH=YOUR_TLMGR_ABSOLUTE_INSTALLATION_PATH:$PATH' $HOME/.bash_aliases
+
     tlmgr init-usertree
+    tlmgr option repository http://ctan.mackichan.com/systems/texlive/tlnet
   
     # Tex packages
     # xzdec needed for the standalone package
