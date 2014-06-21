@@ -1,0 +1,135 @@
+            {
+              "data": [
+                {
+                  "year_week": {
+                    "unit": "2013-W18",
+                    "range_start": "2013-05-01",
+                    "range_end": "2013-05-04",
+                    "is_complete": false
+                  },
+                  "sales": 275907.00142144,
+                  "traffic_out": {
+                    "value": 9982,
+                    "validity": "valid"
+                  }
+                },
+                {
+                  "year_week": {
+                    "unit": "2013-W19",
+                    "range_start": "2013-05-05",
+                    "range_end": "2013-05-11",
+                    "is_complete": true
+                  },
+                  "sales": 280952.00142144,
+                  "traffic_out": {
+                    "value": 10010,
+                    "validity": "imputed"
+                  }
+                },
+                {
+                  "year_week": {
+                    "unit": "2013-W20",
+                    "range_start": "2013-05-12",
+                    "range_end": "2013-05-18",
+                    "is_complete": true
+                  },
+                  "sales": 295991.00142144,
+                  "traffic_out": {
+                    "value": 11951,
+                    "validity": "valid"
+                  }
+                },
+                {
+                  "year_week": {
+                    "unit": "2013-W21",
+                    "range_start": "2013-05-19",
+                    "range_end": "2013-05-25",
+                    "is_complete": true
+                  },
+                  "sales": 301985.00142144,
+                  "traffic_out": {
+                    "value": 14951,
+                    "validity": "valid"
+                  }
+                },
+                {
+                  "year_week": {
+                    "unit": "2013-W22",
+                    "range_start": "2013-05-26",
+                    "range_end": "2013-05-31",
+                    "is_complete": false
+                  },
+                  "sales": 296131.00142144,
+                  "traffic_out": {
+                    "value": 14482,
+                    "validity": "valid"
+                  }
+                },
+                {
+                  "year_week": {
+                    "unit": "2014-W18",
+                    "range_start": "2014-05-01",
+                    "range_end": "2014-05-03",
+                    "is_complete": false
+                  },
+                  "sales": 298831.00142144,
+                  "traffic_out": {
+                    "value": 13259,
+                    "validity": "imputed_invalid"
+                  }
+                },
+                {
+                  "year_week": {
+                    "unit": "2014-W19",
+                    "range_start": "2014-05-04",
+                    "range_end": "2014-05-10",
+                    "is_complete": true
+                  },
+                  "sales": 291437.66998335,
+                  "traffic_out": {
+                    "value": 14101,
+                    "validity": "valid"
+                  }
+                },
+                {
+                  "year_week": {
+                    "unit": "2014-W20",
+                    "range_start": "2014-05-11",
+                    "range_end": "2014-05-17",
+                    "is_complete": true
+                  },
+                  "sales": 308122.66998335,
+                  "traffic_out": {
+                    "value": 15286,
+                    "validity": "valid"
+                  }
+                },
+                {
+                  "year_week": {
+                    "unit": "2014-W21",
+                    "range_start": "2014-05-18",
+                    "range_end": "2014-05-24",
+                    "is_complete": true
+                  },
+                  "sales": 355501.3679329,
+                  "traffic_out": {
+                    "value": 19918,
+                    "validity": "valid"
+                  }
+                },
+                {
+                  "year_week": {
+                    "unit": "2014-W22",
+                    "range_start": "2014-05-25",
+                    "range_end": "2014-05-31",
+                    "is_complete": true
+                  },
+                  "sales": 366610.84483389,
+                  "traffic_out": {
+                    "value": 20120,
+                    "validity": "valid"
+                  }
+                }
+              ],
+              "is_complete": true
+            }

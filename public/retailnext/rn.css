@@ -1,0 +1,123 @@
+.forceCode {
+    font-family:'Source Code Pro', 'Panic Sans', Monaco, monospace, sans-serif;
+    font-size:12px;
+    padding:1px 2px;
+    border-radius:3px;
+    background-color:#fffff5;
+    color:#639;
+    border:1px solid rgba(0,0,0,0.15);
+    line-height:2;
+}
+
+.marginLpointfive {
+    margin-left:.5em;  
+}
+
+.linktitle {
+    text-align: center;
+    margin-left: 1.06em;
+    font-size: xx-large;
+}
+
+tr.darken {
+    background-color:#444444;
+    color:#EEEEEE;
+    text-shadow:none;
+}
+
+tr.darken a {
+    color:#EEEEEE !important;
+}
+
+td > code {
+    color:black;
+}
+
+table.subTable {
+    line-height:normal;
+    background-color:#f7f7f7;
+    color:black;
+}
+
+.paramsTable td:first-child {
+    width:1%;
+    white-space:nowrap;
+}
+
+table {
+    table-layout:auto !important;
+}
+
+body {
+	min-width:1280px;
+}
+
+.subToC {
+    margin-left:1.5em !important;
+    font-size:12.2px;
+}
+
+.subsubToC {
+    margin-left:3em !important;
+    font-size:11.8px;
+}
+
+/*Affix from BS3.1.1*/
+.affix {
+      position: fixed;
+}
+/* Button CSS from Bootstrap 3.1.1-dist */
+button,
+input,
+optgroup,
+select,
+textarea {
+      margin: 0;
+        font: inherit;
+          color: inherit;
+}
+button {
+      overflow: visible;
+}
+button,
+select {
+      text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+      -webkit-appearance: button;
+        cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+      cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+      padding: 0;
+        border: 0;
+}
+input,
+button,
+select,
+textarea {
+      font-family: inherit;
+        font-size: inherit;
+          line-height: inherit;
+}
+input[type="button"].btn-block {
+      width: 100%;
+}
+[data-toggle="buttons"] > .btn > input[type="radio"],
+[data-toggle="buttons"] > .btn > input[type="checkbox"] {
+      display: none;
+}
+button.close {
+      -webkit-appearance: none;
+        padding: 0;
+          cursor: pointer;
+            background: transparent;
+              border: 0;
+}
