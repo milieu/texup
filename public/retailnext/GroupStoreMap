@@ -1,0 +1,19 @@
+# Group Store Map
+
+## Map [/map?api_key={api_key}&id={id}&name={name}&object_type={object_type}&parent_id={parent_id}&location_type={location_type}&ip={ip}&manufacturer={manufacturer}&model={model}&port={port}&vendor={vendor}]
+
+### Query for a map of stores [GET]
+
++ Parameters
+  + id (optional, string, ``) ... <div title="S000">id</div>
+  + name (optional, string, ``) ... <div title="S001">name</div>
+  + object_type (optional, string, ``) ... <div title="S002">object_type</div>
+  + parent_id (optional, string, ``) ... <div title="S003">parent_id</div>
+  + location_type (optional, string, ``) ... <div title="S004">location_type</div>
+  + ip (optional, string, ``) ... <div title="S005">ip</div>
+  + manufacturer (optional, string, ``) ... <div title="S006">manufacturer</div>
+  + model (optional, string, ``) ... <div title="S007">model</div>
+  + port (optional, string, ``) ... <div title="S008">port</div>
+  + vendor (optional, string, ``) ... <div title="S009">vendor</div>
+
++ Response 200 (application/json)

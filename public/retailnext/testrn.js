@@ -27,8 +27,13 @@ $(document).ready(function() {
 
 
     $('section.code').each(function(idx, el) {
+        
+        var rsrc = $(el).closest('section.resource');
 
-        var relatedStories = $(el).closest('section.resource').children('article.details').children('div.storytime').detach();
+        var relatedStories = rsrc.children('article.details').children('div.storytime').detach();
+        var queryParamsArr = $.map($.makeArray(rsrc.find('div.examples')), function(el, idx){
+                return el.getAttribute("hash");
+            });
 
         var numLangs = 12;
         var totalNumExamples = 0;
@@ -50,10 +55,22 @@ $(document).ready(function() {
                     // select and detach  all the requests ""
                     // select and detach  all the responses ""
                     var me = $(mutation.addedNodes[0]).closest('section.resource');
-                    var allRequests = me.find('.highlighted[name=raw]').detach();
-                    var requestArr = $.makeArray(allRequests);
+                    var allRequests = $.makeArray(me.find('.highlighted[name=raw]').detach());
+                    var requestArr = $.map(allRequests, function(val, idx){
+                            var badQueryParamJquery = $(val).find("span:contains('http')");
+                            badQueryParamJquery.each(function(idx, paramHtml) {
+                                var badParam = paramHtml.innerHTML;
+                                console.log(badParam);
+                            });
+
+                        });
+
+                    // replace all matches for http:// smth/hash with http:// smth/myHash
+
+
                     var outputs = me.find('p.ioDesc:innerHTMLExactlyEquals(Response)').detach();
                     var responseTextArr = $.makeArray(outputs);
+                    
                     var outputJson = me.find('section.outgoingCall').detach();
                     var responseJsonArr = $.makeArray(outputJson);
 

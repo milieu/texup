@@ -1,0 +1,7 @@
+<table><th><td>Name</td><td>Description</td><td>Details</td></th><tr></tr></table> 
+
+<sub style="line-height:normal;"><table><tr><td>Name</td><td>Description</td><td>Details</td></tr><tr><td>location</td><td>Whether to return in-store visitor counts or passing visitor counts</td><td>enum, required<br>possible values <ul><li>`store`</li><li>`passby`</li></ul></td></tr></table></sub> | 
+
+
+
+ <ul><li>**location** - enum of `store` or `passby`</li><li>**is_repeat** - boolean</li></ul> 

@@ -1,0 +1,41 @@
+ Formula 222
+:-------:
+ None 
+ \frac{traffic in - traffic out}{traffic in + traffic out}
+ Number of Sales Transactions + Number of Returned Transactions 
+ Total Amount from Sales Transactions - Total Amount from Returned Transactions 
+ \frac{Net Units}{Total Transactions}
+ \frac{Sales}{Total Transactions}
+ None 
+ \frac{\sum Dwell Time for each Dwell}{Dwells}
+ 100% \times \frac{Sales Transactions}{Traffic Out count}
+ 100% \times \frac{Dwells for location}{Traffic for Location}
+ 100% \times \frac{Sales Transactions for Location}{Dwells for Location}
+ \frac{Traffic In}{Staff Count}
+ \frac{Traffic Out}{Staff Count}
+ None 
+ \frac{Sales}{Labour Hours}
+ \frac{Sales Transactions}{Area}
+ \frac{Sales}{Area}
+ \frac{Sales}{Traffic Out}
+ None
+ \frac{100% \times WTraffic}{Traffic IN (from video)}
+ \frac{Passby WTraffic}{Detection Rate}
+ 100% \times \frac{WTraffic}{Passby WTraffic}
+ \frac{\sum duration of all INSIDE events that started in the period}{count of INSIDE events that started in the period}
+ 100% - Repeat Visitor % 
+ ??? 
+ ??? 
+ \frac{total # of visits}{total unique visitors}
+ \frac{sum of queue event durations}{count of queue entry events}
+ ??? 
+ ??? 
+ \frac{Unique Passby WTraffic}{Detection Rate}
+ \frac{Traffic IN (from video) \times Unique WTraffic}{WTraffic}
+ 100% \times \frac{domestic count}{domestic + international count} 
+ 100% \times \frac{local count}{local + non-local count}
+ 100% \times \frac{non-local count}{local + non-local count}
+ 100% \times \frac{international count}{domestic + international count}
+ 100% \times \frac{count matching gender in optional age range}{total gender counts}
+ \frac{\sum of ages}{total age events}
+ \frac{Traffic OUT for the selected location}{Traffic OUT for the Store} 

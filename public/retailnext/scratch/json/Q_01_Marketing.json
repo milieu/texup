@@ -1,0 +1,55 @@
+            {
+              "data": [
+                {
+                  "year_week": "2013-W18”,
+                  "sales": 275907.00142144,
+                  "traffic_out": 9982
+                },
+                {
+                  "year_week": "2013-W19",
+                  "sales": 280952.00142144,
+                  "traffic_out": 10010
+                },
+                {
+                  "year_week": "2013-W20",
+                  "sales": 295991.00142144,
+                  "traffic_out": 11951
+                },
+                {
+                  "year_week": "2013-W21",
+                  "sales": 301985.00142144,
+                  "traffic_out": 14951
+                },
+                {
+                  "year_week": "2013-W22",
+                  "sales": 296131.00142144,
+                  "traffic_out": 14482
+                },
+                {
+                  "year_week": "2014-W18”,
+                  "sales": 298831.00142144,
+                  "traffic_out": 13259
+                },
+                {
+                  "year_week": "2014-W19",
+                  "sales": 291437.66998335,
+                  "traffic_out": 14101
+                },
+                {
+                  "year_week": "2014-W20",
+                  "sales": 308122.66998335,
+                  "traffic_out": 15286
+                },
+                {
+                  "year_week": "2014-W21",
+                  "sales": 355501.3679329,
+                  "traffic_out": 19918
+                },
+                {
+                  "year_week": "2014-W22",
+                  "sales": 366610.84483389,
+                  "traffic_out": 20120
+                }
+              ],
+              "is_complete": true
+            }

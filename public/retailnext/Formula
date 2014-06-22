@@ -1,0 +1,41 @@
+ Formula 
+:-------:
+ None 
+ (traffic in - traffic out) / (traffic in + traffic out) 
+ Number of Sales Transactions + Number of Returned Transactions 
+ Total Amount from Sales Transactions - Total Amount from Returned Transactions 
+ Net Units / Total Transactions 
+ Sales / Total Transactions 
+ None 
+ Sum (Dwell Time for each Dwell) / Dwells 
+ 100% * Sales Transactions / Traffic Out count <br><sub>Note: Excludes returned sales transactions.</sub> 
+ 100% * Dwells for location / Traffic for Location 
+ 100% * Sales Transactions for Location / Dwells for Location <br><sub>Sales Transactions for Location = sales transactions that include a SKU associated with the location<br>Dwells for Location = dwell events for the location</sub> 
+ Traffic In / Staff Count <br><sub>Note: Measured in 15 minute increments, e.g. for a 1 hour period, we take an average of the Traffic In / Staff Count values for the four 15-minute periods.</sub> 
+ Traffic Out / Staff Count <br><sub>Note: Measured in 15 minute increments, e.g. for a 1 hour period, we take an average of the Traffic Out / Staff Count values for the four 15-minute periods.</sub> 
+ None 
+ Sales / Labour Hours 
+ Sales Transactions / Area 
+ Sales / Area 
+ Sales / Traffic Out 
+ None<br><sub>NOTE: need to confirm that this is measured in 15 min increments, so for a 1-hour period, we take the average Staff Count for the 4 15-minute periods; also confirm that if looking at multiple locations, such as all stores in a district, we take the average (not total) across the locations.</sub> 
+ 100% * WTraffic / Traffic IN (from video)<br><sub>WTraffic = the count of INSIDE events that started in that period</sub> 
+ Passby WTraffic / Detection Rate <br><sub>Passby WTraffic = the count of OUTSIDE events that started in the period<br>WTraffic = the count of INSIDE events that started in that period<br>Detection Rate = 100% * WTraffic / Traffic IN (from video)</sub> 
+ 100% * WTraffic / Passby WTraffic <br><sub>WTraffic = the count of INSIDE events that started in that period <br>Passby WTraffic = the count of OUTSIDE events that started in the period </sub>
+ (sum of duration of all INSIDE events that started in the period) / (count of INSIDE events that started in the period) 
+ 100% - Repeat Visitor % 
+ ??? 
+ ??? 
+ total # of visits / total unique visitors 
+ (sum of queue event durations) / (count of queue entry events) <br><sub>Queue Entry and Exit events are stored with a track ID, a timestamp, and a queue length.<br>For a given Track ID, queue event duration = Queue entry timestamp - Queue exit timestamp.<br>Within a given time period, all track IDs associated with a Queue entry are found.</sub> 
+ ??? 
+ ??? 
+ Unique Passby WTraffic / Detection Rate <br><sub>Unique Passby WTraffic = Passby WTraffic * Unique WTraffic / WTraffic <br>Passby WTraffic = the count of OUTSIDE events that started in the period<br>Unique WTraffic = the number of unique devices that generated INSIDE events that started in the period<br>WTraffic = the count of INSIDE events that started in that period<br>Detection Rate = 100% * WTraffic / Traffic IN (from video)</sub> 
+ Traffic IN (from video) * Unique WTraffic / WTraffic <br><sub>Unique WTraffic = the number of unique devices that generated INSIDE events that started in the period<br>WTraffic = the count of INSIDE events that started in that period</sub> 
+ 100% * domestic count / (domestic + international count) 
+ 100% * local count / (local + non-local count)  
+ non-local % = 100% * non-local count / (local + non-local count) 
+ 100% * international count / (domestic + international count) 
+ 100% * count matching gender in optional age range / total gender counts 
+ sum of ages / total age events 
+ Traffic OUT for the selected location / Traffic OUT for the Store  
