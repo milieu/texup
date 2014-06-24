@@ -5,7 +5,10 @@ import play.api.templates.Html
 import scala.concurrent.Future
 import scalax.file.Path
 
-object Global extends GlobalSettings {
+import filters.AddResponseHeader
+import play.api.mvc.WithFilters
+
+object Global extends WithFilters(AddResponseHeader) with GlobalSettings {
   override def onHandlerNotFound(request: RequestHeader) = {
     Future.successful(NotFound(
       views.html.main("404: Not Found")(

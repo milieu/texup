@@ -2,27 +2,12 @@ package controllers
 
 import play.api._
 import play.api.mvc._
-
-import scalax.io._
 import java.nio.file.{Paths, Files}
 import scala.sys.process._
 import java.io.File
 import java.net.URLEncoder.encode
 
 object Application extends Controller {
-
-
-  def headers = List(
-    "Access-Control-Allow-Origin" -> "*",
-    "Access-Control-Allow-Methods" -> "GET, POST, OPTIONS, DELETE, PUT",
-    "Access-Control-Max-Age" -> "3600",
-    "Access-Control-Allow-Headers" -> "Origin, Content-Type, Accept, Authorization",
-    "Access-Control-Allow-Credentials" -> "true"
-  )
-
-  def options(url: String) = Action { request =>
-    NoContent.withHeaders(headers : _*)
-  }
 
   def index = Action { implicit request =>
     Ok(views.html.index(request.host))
