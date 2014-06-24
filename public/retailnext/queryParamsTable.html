@@ -1,0 +1,130 @@
+<div class="paramsTableWrap">
+  <table class="paramsTable">
+    <caption>Parameters</caption>
+    <colgroup>
+      <col span="1" style="width: 13%;" />
+      <col span="1" style="width: 47%;" />
+      <col span="1" style="width: 40%;" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>api_key</td>
+        <td>
+          <p>The API Key.</p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>myApiKey</samp> 
+        </td>
+      </tr>
+      <tr>
+        <td>row_limit</td>
+        <td>
+          <p>The maximum number of rows to return.</p>
+        </td>
+        <td>integer, optional
+          <br>example: <samp>5000</samp>
+          <br>default: <samp>1000</samp>
+          <br>constraint: <code>1 <= row_limit <= 33000</code>
+        </td>
+      </tr>
+      <tr>
+        <td>primary_currency</td>
+        <td>
+          <p>The code of the currency to return sales data back in in the
+             case where there are conflicts (multiple currencies) in the dataset.
+          </p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>EUR</samp>
+        </td>
+      </tr>
+      <tr>
+        <td>fallback_currency</td>
+        <td>
+          <p>The code of the currency to return sales data back in in the
+             case where there are conflicts (multiple currencies) in the dataset
+             and no primary currency is specified or conversion to the primary
+             currency failed (for example, when exchange rates are unknown).
+          </p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>EUR</samp>
+          <br>default: <samp>USD</samp> 
+        </td>
+      </tr>
+      <tr>
+        <td>calendar_type</td>
+        <td>
+          <p>The calendar type to use in queries.</p>
+        </td>
+        <td>enum, optional
+          <br>example: <samp>retail</samp>
+          <br>possible values:
+          <br>
+          <span class="forceCode">gregorian</span> 
+          <span class="forceCode">retail</span> 
+          <br>default: <samp>gregorian</samp>
+        </td>
+      </tr>
+      <tr>
+        <td>location_ids</td>
+        <td>
+          <p>Filter by specific location ids.</p>
+          <p>Note that <code>corp</code> is an alias for the id of the hosting server.</p>
+        </td>
+        <td>string, optional
+          <br>example:
+          <br>&nbsp;&nbsp;<samp>66b64d81-73da-4aca-83e8-cf14740a64b4</samp>
+          <br>default: <samp>corp</samp> 
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#measures">measures</a></td>
+        <td>
+          <p>The measures to query.</a>
+          </p>
+        </td>
+        <td>string, required
+          <br>example: <samp>sales;traffic+subtype=out</samp>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#groupings">groupings</a></td>
+        <td>
+          <p>Specifies how to group the output.</p>
+        </td>
+        <td>string, required
+          <br>example: <samp>location;year_month+verbose=true</samp>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#date_ranges">date_ranges</a></td>
+        <td>
+          <p>Filter with date ranges.</p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>y2014</samp>
+          <br>default: <samp>previous2weeks</samp>
+          <br>constraint: <code>date_ranges >= 2009</code>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#time_ranges">time_ranges</a></td>
+        <td>
+          <p>Filter with time ranges.
+          </p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>0630-1800;store_hours</samp>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

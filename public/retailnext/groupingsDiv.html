@@ -1,0 +1,144 @@
+<div id="groupings" class="subQuery">
+  <div class="linktitle">
+    <a id="ah_groupings" class="subanchor" name="groupings"></a>Groupings
+  </div>
+  <div class="paramsTableWrap">
+    <table class="paramsTable">
+      <caption>Attributes</caption>
+      <colgroup>
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 75%;">
+        <col span="1" style="width: 15%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>alias</td>
+          <td>
+            <p>Names the corresponding grouping field in the output JSON.</p>
+            <p>Field names match their corresponding id by default, however,
+               an alias must be specified if an id is used more than
+               once since all output fields must be unique.</p>
+          </td>
+          <td>string, optional
+            <br>example: <samp>loc_id</samp> 
+          </td>
+        </tr>
+        <tr>
+          <td>verbose</td>
+          <td>
+            <p>For time-based groupings, the fields <code>range_start</code>, <code>range_end</code>
+               and <code>is_complete</code> are added to the JSON output.</p>
+          </td>
+          <td>boolean, optional
+            <br>example: <samp>true</samp> 
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  
+  <div class="paramsTableWrap">
+    <table class="paramsTable"><tbody>
+      <tr>
+        <th style="text-align:center;">Grouping ID</th>
+        <th style="text-align:center;" colspan="2">Output Format</th>
+        <th style="">Attributes/Description</th>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="G001">location</div></td>
+        <td style="text-align:center;" colspan="2"><a href="http://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a></td>
+        <td style="">Group by location</td>
+      </tr>
+      <tr>
+        <th class="darken" style="text-align:center;"><em>Time: Size-based</em></th>
+        <th class="darken" style="text-align:center;">Unit</th>
+        <th class="darken" style="text-align:center;">Start / end</th>
+        <td style="" rowspan="10">
+          <p>Group by the specified time unit.</p>
+          <table class="subTable">
+            <tbody>
+              <tr><th class="oneline">Name</th><th>Description</th><th>Details</th></tr>
+              <tr><td>unit_size</td><td>How many time units to group by</td><td>integer, optional<br>example: <samp>30</samp><br>default: <samp>1</samp></td></tr>
+            </tbody>
+          </table>
+          <p>Multiple time units are grouped with the largest unit first; e.g.: <code>year_month_day</code> groups by year, then month, then day.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT17">hour</div></td>
+        <td style="text-align:center;">HH</td>
+        <td style="text-align:center;">HH:mm:ss</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT19">hour_minute</div></td>
+        <td style="text-align:center;">HH:mm:ss</td>
+        <td style="text-align:center;">HH:mm:ss</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT05">month</div></td>
+        <td style="text-align:center;"><div title="01 to 12">MM</div></td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT02">year</div></td>
+        <td style="text-align:center;">yyyy</td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT10">year_month_day</div></td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT21">year_month_day_hour_minute</div></td>
+        <td class="oneline" style="text-align:center;">yyyy-MM-dd'T'HH:mm:ss</td>
+        <td class="oneline" style="text-align:center;">yyyy-MM-dd'T'HH:mm:ss</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT09">year_month</div></td>
+        <td style="text-align:center;">yyyy-MM</td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+    
+      <tr>
+        <td style="text-align:center;"><div title="GT20">minute</div></td>
+        <td style="text-align:center;">mm</td>
+        <td style="text-align:center;">mm:ss-dd</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT07">year_week</div></td>
+        <td style="text-align:center;">yyyy-'W'ww</td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+      <tr style="height:.5em;">
+        <th class="darken" style="text-align:center;"><em>Time: Value-based</em></th>
+        <th class="darken" style="text-align:center;">Unit</th>
+        <th class="darken" style="text-align:center;">Start / end</th>
+        <td class="subTable" rowspan="3">Group by the specified time unit.
+          <table class="subTable"><tbody>
+            <tr><th>Name</th><th>Description</th><th>Details</th></tr>
+            <tr><td>values</td><td>Which days of the week or weeks of the year to group by.</td><td>integer(s), required<br>example: <samp>1,3,5</samp></td></tr>
+          </tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT15">day_of_week</div></td>
+        <td style="text-align:center;"><div title="w=1 to 7">'-W-'w</div></td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT12">week_of_year</div></td>
+        <td style="text-align:center;"><div title="ww=01 to 53">'-W'ww</div></td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+    </tbody></table>
+  </div>
+</div>

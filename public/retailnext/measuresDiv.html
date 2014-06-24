@@ -1,0 +1,335 @@
+<div id="measures" class="subQuery">
+<div class="linktitle">
+  <a id="ah_measures" class="subanchor" name="measures"></a>Measures
+</div>
+<div class="paramsTableWrap">
+  <table class="paramsTable">
+    <caption>Parameters</caption>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>alias</td>
+        <td>
+          <p>Names the corresponding measure field in the output JSON.</p>
+          <p>Field names match their corresponding id by default, however,
+             an alias must be specified if an id is used more than
+             once since all output fields must be unique.</p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>traffic_in</samp> 
+        </td>
+      </tr>
+      <tr>
+        <td>verbose</td>
+        <td>
+          <p>Adds</a> the <code>validity</code> field to the JSON output.
+          </p>
+        </td>
+        <td>boolean, optional
+          <br>example: <samp>true</samp> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<div class="paramsTableWrap">
+  <table class="paramsTable">
+    <colgroup>
+      <col span="1" class="oneline">
+      <col span="2" class="oneline">
+    </colgroup>
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <th align="center">Measure ID</th>
+        <th colspan="2">Description &amp; Attributes</th>
+      </tr>
+    </tbody>
+    <tbody>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="trafficexposure"></a>Traffic / Exposure</th>
+    </tr>
+    <tr>
+      <td align="center" class="oneline"><div title="M000">traffic</div></td>
+      <td colspan="2">Number of people detected by video to have walked in or out of the store 
+        <table class="subTable"><tbody><tr><th class="oneline">Name</th><th style="width:18%;">Description</th><th>Details</th></tr><tr><td>subtype</td><td>Type of traffic counts to return</td><td>enum, required<br>example: <samp>out</samp><br>possible values:<p/>
+          <span class="forceCode marginLpointfive">in</span>
+          <span class="forceCode">out</span>
+          <span class="forceCode">all_in</span>
+          <span class="forceCode">all_out</span>
+          <span class="forceCode">staff_in</span>
+          <span class="forceCode">staff_out</span>
+        </td></tr></tbody></table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M089">unique_traffic<a href="javascript:void(0);" title="Shortcut for unique_mobile_device_traffic+location=store"><sup>1</sup></div></td>
+      <td colspan="2">
+          <p>Number of individual shoppers who enter the store (each person is counted only once for the date range selected)</p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M114">exposure_rate</div></td>
+      <td colspan="2">Percentage of shoppers who walk by a specific location as compared to the total store traffic</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M062">passby_traffic</div></td>
+      <td colspan="2">Number of people who walk by the store, including those who enter</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M088">unique_passby_traffic<a href="javascript:void(0);" title="Shortcut for unique_mobile_device_traffic+location=passby"><sup>1</sup></div></td>
+      <td colspan="2">
+        <p>Number of individual shoppers who walk by the store (each person is counted only once for the date range selected)</p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M063">capture_rate</div></td>
+      <td colspan="2">Percentage of people passing by the store who enter the store</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M061">mobile_device_detection_rate</div></td>
+      <td colspan="2">Percentage of shoppers who enter the store with a detected mobile device</td>
+    </tr>
+    <tr>
+      <td align="center">
+        <div title="M080">mobile_device_traffic</div>
+      </td>
+      <td style="width:20%;">Number of mobile devices detected in the specified time period.</td>
+      <td rowspan="2" style="width:50%;">
+        <table class="subTable">
+          <tbody>
+            <tr>
+              <th class="oneline">Name</th>
+              <th>Description</th>
+              <th>Details</th>
+            </tr>
+            <tr>
+              <td>location</td>
+              <td>Whether to return in-store visitor counts or passing visitor counts</td>
+              <td>enum, required
+                <br>example: <samp>passby</samp>
+                <br>possible values: <span class="forceCode marginLpointfive">store</span><span class="forceCode">passby</span>
+              </td>
+            </tr>
+            <tr>
+              <td>is_repeat</td>
+              <td>If <code>true</code>, returns the mobile device counts of returning customers.</td>
+              <td>boolean, optional
+                <br>example: <samp>true</samp>
+                <br>default: <samp>null</samp> (Both)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <div title="M081">unique_mobile_device_traffic</div>
+      </td>
+      <td>Number of unique mobile devices detected in the specified time period.</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="engagement"></a>Engagement</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M021">dwells</div></td>
+      <td colspan="2">Number of shoppers who stand in a specified zone for longer than a defined minimum amount of time</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M022">avg_dwell_time</div></td>
+      <td colspan="2">Average amount of time shoppers stand in a specified dwell zone</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M026">engagement_rate</div></td>
+      <td colspan="2">Percentage of shoppers walking by a location who stop at that location</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M064">visit_duration</div></td>
+      <td colspan="2">Average amount of time shoppers spend inside the store</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="conversion"></a>Conversion</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M025">conversion_rate</div></td>
+      <td colspan="2">The percentage of shoppers visiting the store who make a purchase</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M027">dwell_conversion_rate</div></td>
+      <td colspan="2">Percentage of shoppers who stop in a specified dwell zone and make a purchase</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M055">shopper_yield</div></td>
+      <td colspan="2">Average sale amount for each shopper entering the store in a specified period</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="sales"></a>Sales</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M009">sales</div></td>
+      <td colspan="2">Net sales for a specified period</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M007">all_transactions</div></td>
+      <td colspan="2">Total number of sales &amp; return transactions for a specified period 
+        <table class="subTable"><tbody>
+          <tr>
+            <th class="oneline">Name</th><th>Description</th><th>Details</th>
+          </tr>
+          <tr>
+            <td>transaction_status</td><td>What transactions to return based on completion status.</td>
+            <td>enum,optional
+              <br>example: <samp>voided</samp>
+              <br>possible values:
+              <br>
+              <span class="forceCode marginLpointfive">normal</span>
+              <span class="forceCode">voided</span>
+              <span class="forceCode">post_voided</span>
+              <br>default: <samp>normal</samp>
+            </td>
+          </tr>
+          <tr>
+          <td>transaction_type</td>
+          <td>What types of transactions to return.</td>
+          <td>enum, optional
+            <br>example: <samp>sale</samp>
+            <br>possible values:
+            <br>
+            <span class="forceCode marginLpointfive">sale</span>
+            <span class="forceCode">return_item</span>
+            <span class="forceCode">all</span>
+            <br>default: <samp>all</samp>
+          </td></tr></tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M013">avg_transaction_value</div></td>
+      <td colspan="2">Average sales amount spent per transaction</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M011">avg_items_per_transaction</div></td>
+      <td colspan="2">Average number of items purchased per transaction</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M054">sales_per_sq_unit</div></td>
+      <td colspan="2">Net sales per square unit of space</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M053">transactions_per_sq_unit</div></td>
+      <td colspan="2">Total number of sales transactions per square unit of space</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="shopperbase"></a>ShopperBase</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M111">demographics</div></td>
+      <td colspan="2">Percentage of shoppers matching the specified demographic filters 
+        <table class="subTable"><tbody>
+          <tr>
+            <th class="oneline">Name</th>
+            <th>Description</th><th>Details</th>
+          </tr>
+          <tr>
+            <td>gender</td>
+            <td>What gender to filter by.</td>
+            <td>enum,optional
+              <br>example: <samp>female</samp>
+              <br>possible values:
+              <br>
+              <span class="forceCode marginLpointfive">male</span>
+              <span class="forceCode">female</span>
+            </td>
+          </tr>
+          <tr>
+            <td>age_range_ids<sup><a href="javascript:void(0);">*</a></sup></td>
+            <td>Which age ranges to filter by.</td>
+            <td>integer(s), optional
+              <br>example: <samp>100,210</samp>
+            </td>
+          </tr>
+        </tbody></table>
+        <p><sub><a class="anchor" name="age_range_ids_note"></a><a>*</a> Request-specified age ranges (e.g. "13-19") are not currently supported. Refer to <a href="#age_ranges">Age Ranges</a> on how to retrieve UI-defined range ids</sub></p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M113">avg_age</div></td>
+      <td colspan="2">Average age of shoppers who enter the store</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M066">new_shopper_percentage</div></td>
+      <td colspan="2">Percentage of shoppers visiting the store for the first time</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M071">visit_frequency</div></td>
+      <td colspan="2">Average number of times a shopper enters the store within a specified time period</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M102">local_percentage<a href="javascript:void(0);" title="Requires AMEX data license"><sup>2</sup></a></div></td>
+      <td colspan="2">Percentage of customers who live in the same city as the store</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M103">nonlocal_percentage<a href="javascript:void(0);" title="Requires AMEX data license"><sup>2</sup></a></div></td>
+      <td colspan="2">Percentage of customers who live in a different city than the store</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M101">domestic_percentage<a href="javascript:void(0);" title="Requires AMEX data license"><sup>2</sup></a></div></td>
+      <td colspan="2">Percentage of customers who live in the same country as the store</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M104">international_percentage<a href="javascript:void(0);" title="Requires AMEX data license"><sup>2</sup></a></div></td>
+      <td colspan="2">Percentage of customers who live in a different country than the store</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="staffing"></a>Staffing</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M056">staff_count</div></td>
+      <td colspan="2">Number of people on staff for a specified period (measured in 15-minute increments)</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M038">labor_hours</div></td>
+      <td colspan="2">Total number of hours worked by staff members</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M036">shopper_to_staff_ratio</div></td>
+      <td colspan="2">Ratio of shoppers who entered the store to staff members</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M051">staff_productivity</div></td>
+      <td colspan="2">Sales per staff hour</td>
+    </tr>
+    <tr class="darken">
+      <th align="center" colspan="3"><a class="subsubanchor" name="queue"></a>Queue</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M072">queue_wait_time</div></td>
+      <td colspan="2">Average time required for a shopper to pass through the queue area</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="other"></a>Other</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M006">variance</div></td>
+      <td colspan="2">Percentage difference between the number of people entering a store and the number leaving it each day during store hours.</td>
+    </tr>
+    </tbody>
+  </table>
+  <sub><a class="anchor" name="unique_traffic_node"></a><a>1.</a> Shortcut measure that can be derived from one or more other measures</sub>
+  <br>
+  <sub><a class="anchor" name="AMEX"></a><a>2.</a> Requires AMEX data license</sub>
+</div>
+
+
+</div>

@@ -1,0 +1,85 @@
+<div id="date_ranges" class="subQuery">
+<div class="linktitle">
+  <a id="ah_date_ranges" class="subanchor" name="date_ranges"></a>Date Ranges
+</div>
+  <div class="paramsTableWrap">
+    <table class="paramsTable">
+      <caption>Parameters</caption>
+      <thead>
+        <tr>
+          <th class="oneline">Name</th>
+          <th>Description</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>compare_yoy</td>
+          <td class="oneline">
+            <p>Adds the same range from the previous year</p>
+          </td>
+          <td>boolean, optional
+            <br>example: <samp>true</samp>
+            <br>default: <samp>false</samp>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <br>
+  
+  <div class="paramsTableWrap">
+    <table class="paramsTable">
+      <tbody><tr>
+        <th>Date Range ID / <em>Type</em></th>
+        <th>Attributes / Descriptions</th>
+      </tr>
+      <tr class="">
+        <th><em><div title="DR48">absolute</div></em></th>
+        <td>Retrieves data for a specific year, month of year, or week of year, e.g. <code>y2014m04</code>.
+            <p>Accepted formats: <code>'y'yyyy</code>, <code>'y'yyyy'm'MM</code>, <code>'y'yyyy'w'ww</code>.</p></td>
+      </tr>
+      <tr>
+        <th><em><div title="DR54">specified</div></em></th>
+        <td>Filter by specified date ranges, e.g. <code>20140430-20140531</code></td>
+      </tr>
+      <tr class="">
+        <td><div title="DR01">current<code class="forceCode">time_unit</code></td></td>
+        <td rowspan="2" title="TODO description for both current and previous">
+          Date range relative to the current date, e.g. <code>previous2weeks</code> or <code>currentday</code>.
+          <table class="subTable">
+            <tbody>
+              <tr>
+                <th class="oneline">Name</th>
+                <th>Description</th>
+                <th>Details</th>
+              </tr>
+              <tr>
+                <td><em>time_unit</em></td>
+                <td>The time unit used to determine the range.</td>
+                <td>enum, required
+                   <br>example: <samp>months</samp><br>
+                   possible values:
+                   <br>
+                   <span class="forceCode">day(s)</span> 
+                   <span class="forceCode">week(s)</span> 
+                   <span class="forceCode">month(s)</span> 
+                   <span class="forceCode">year(s)</span> 
+                </td>
+              </tr>
+              <tr>
+                <td><em>value</em></td>
+                <td>integer, optional
+                <td>The number of <code>time_units</code> to go back to determine the start date.</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr class="">
+        <td><div title="DR00">previous<code class="forceCode">value</code><code class="forceCode">time_unit</code></td></td>
+      </tr>
+    </tbody></table>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Parameters</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>api_key</td>
+                <td>
+                    <p>The API Key.</p>
+                </td>
+                <td>string, optional
+                    <br>example: <samp>myApiKey</samp> 
+                </td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>
+                    <p>Filter locations whose id matches the specified <a href="http://www.postgresql.org/docs/9.3/static/functions-matching.html">pattern</a>.</p>
+                </td>
+                <td>string, optional
+                    <br>example: <samp>0000-0000-0000-0001</samp> 
+                </td>
+            </tr>
+            <tr>
+                <td>parent_id</td>
+                <td>
+                    <p>Filter locations whose parent matches the specified pattern.</p>
+                </td>
+                <td>string, optional
+                    <br>example: <samp>0000-0000-0000-0001</samp> 
+                </td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>
+                    <p>Filter locations whose name matches the specified pattern.</p>
+                </td>
+                <td>string, optional
+                    <br>example: <samp>Front%</samp> 
+                </td>
+            </tr>
+            <tr>
+                <td>type</td>
+                <td>
+                    <p>Filter locations by location type.</p>
+                </td>
+                <td>enum, optional
+                    <br>example: <samp>entrance</samp><br>
+                    possible values:
+                    <br>
+                    <span class="forceCode">aisle</span> 
+                    <span class="forceCode">aisle_group</span> 
+                    <span class="forceCode">area</span> 
+                    <span class="forceCode">checkout_area</span> 
+                    <span class="forceCode">display</span> 
+                    <span class="forceCode">display_group</span> 
+                    <span class="forceCode">entrance</span> 
+                    <span class="forceCode">other</span> 
+                    <span class="forceCode">queue_group</span> 
+                    <span class="forceCode">queue</span> 
+                    <span class="forceCode">region</span> 
+                    <span class="forceCode">store</span>
+                </td>
+            </tr>
+            <tr>
+                <td>object_type</td>
+                <td>
+                    <p>Filter locations by object type.</p>
+                </td>
+                <td>enum, optional
+                    <br>example: <samp>location</samp><br>
+                    possible values:
+                    <br>
+                    <span class="forceCode">location</span>
+                    <span class="forceCode">server</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

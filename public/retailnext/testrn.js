@@ -19,21 +19,30 @@ function interleave(X, arrOfArrs) {
     return result;
 }
 
+function urlReplace(lang, toSearch, urlsearch, queryParamsArr, numExamples) {
+    var requests = toSearch.find('.highlighted[name=' + lang + ']').detach();
+    var urls = requests.find("span:contains('" + urlsearch + "')");
+    var baseUrl = urls.contents()[0].data.replace(/(\/?[^?]*?)\?.*/, "\$1");
+    for (i = 0; i < queryParamsArr.length; ++i) {
+        var wantedHash = queryParamsArr[i].replace(/\/?[^?]*?(\?.*)/, "\$1")
+        urls[i].innerHTML = baseUrl + wantedHash;
+    }
+    return requests;
+}
+
 
 $(document).ready(function() {
     console.log('External JS file loaded');
 
-    $('.language').detach();
-
-
     $('section.code').each(function(idx, el) {
-        
+
         var rsrc = $(el).closest('section.resource');
 
         var relatedStories = rsrc.children('article.details').children('div.storytime').detach();
-        var queryParamsArr = $.map($.makeArray(rsrc.find('div.examples')), function(el, idx){
-                return el.getAttribute("hash");
-            });
+        var relatedExamples = rsrc.children('article.details').children('div.example').detach();
+        var queryParamsArr = $.map($.makeArray(relatedExamples), function(el, idx) {
+            return el.getAttribute("hash");
+        });
 
         var numLangs = 12;
         var totalNumExamples = 0;
@@ -47,39 +56,46 @@ $(document).ready(function() {
         var counter = 0;
 
         var observer = new MutationObserver(function(mutations) {
+            //            mutations.every(function(e,i,a){console.log(e.addedNodes.length + ' added'); console.log(e.removedNodes.length + ' removed');});
+            //            var additions = mutations.filter(function(v,i,a){return v.addedNodes.length != 0; });
+
             mutations.forEach(function(mutation) {
-
-                if (++counter === numberOfExamplesXLanguagesThatShouldBeLoaded) {
-                    // when request and response html is added to the resource,
-                    // select and detach  all the stories in the resource
-                    // select and detach  all the requests ""
-                    // select and detach  all the responses ""
+                //               if(mutation.addedNodes.length === 0) {return;}
+                if (++counter == numberOfExamplesXLanguagesThatShouldBeLoaded) {
                     var me = $(mutation.addedNodes[0]).closest('section.resource');
-                    var allRequests = $.makeArray(me.find('.highlighted[name=raw]').detach());
-                    var requestArr = $.map(allRequests, function(val, idx){
-                            var badQueryParamJquery = $(val).find("span:contains('http')");
-                            badQueryParamJquery.each(function(idx, paramHtml) {
-                                var badParam = paramHtml.innerHTML;
-                                console.log(badParam);
-                            });
 
-                        });
-
+                    // allRequests is composed of three cases: raw, curl, and everything else
+                    //                               (inject body), //  , ://
                     // replace all matches for http:// smth/hash with http:// smth/myHash
 
+                    var rawRequests = me.find('.highlighted[name=raw]').detach();
+                    // ----------------------------------------------------------------------------
+                    var curlRequests = urlReplace('curl', me, '//', queryParamsArr, totalNumExamples).detach();
+                    // ----------------------------------------------------------------------------
 
+                    var allLangRequests = [rawRequests, curlRequests];
+
+                    var otherLangSelector = ['csharp', 'javascript', 'nodejs', 'python', 'php', 'ruby', 'vb', 'objc', 'swift', 'groovy'];
+                    otherLangSelector.forEach(function(v, i, a) {
+                        var thisLangRequest = urlReplace(v, me, '://', queryParamsArr, totalNumExamples).detach();
+                        allLangRequests = allLangRequests.concat(thisLangRequest);
+                    });
+
+                    // ----------------------------------------------------------------------------
                     var outputs = me.find('p.ioDesc:innerHTMLExactlyEquals(Response)').detach();
-                    var responseTextArr = $.makeArray(outputs);
-                    
                     var outputJson = me.find('section.outgoingCall').detach();
-                    var responseJsonArr = $.makeArray(outputJson);
-
-                    var toActuallyInsert = []
+                    // ----------------------------------------------------------------------------
+                    var toActuallyInsert = [];
+                    var toInterleave = allLangRequests.concat([outputs, outputJson]).map(
+                        function(curr, idx, arr) {
+                            return $.makeArray(curr);
+                        }
+                    );
+                    // ----------------------------------------------------------------------------
                     relatedStories.each(function(idx, storyDiv) {
                         toActuallyInsert.push(storyDiv);
                         var span = parseInt(storyDiv.getAttribute("span"));
                         var howManyToInterleave = ((isNaN(span) || span < 1) ? 1 : span);
-                        var toInterleave = [requestArr, responseTextArr, responseJsonArr];
                         var toConcat = interleave(howManyToInterleave, toInterleave);
                         toActuallyInsert = toActuallyInsert.concat(toConcat);
                     });
