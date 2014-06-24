@@ -1,0 +1,25 @@
+            {
+              "locations": [
+                {
+                  "id": "0003449e1a22-88ee-4fe5-bbd6-61088f4a122a",
+                  "name": "MainEntrance",
+                  "type": "entrance",
+                  "object_type": "location",
+                  "parent_id": "2371f087-f8f4-41b1-adee-db33d6b54b6c"
+                },
+                {
+                  "id": "00036ca20f0d-1944-410b-b5a6-c862c909c62d",
+                  "name": "Ent0Loc",
+                  "type": "entrance",
+                  "object_type": "location",
+                  "parent_id": "2371f087-f8f4-41b1-adee-db33d6b54b6c"
+                },
+                {
+                  "id": "000395950acc-fa9e-4eb6-a22b-af8f45180f6d",
+                  "name": "Ent1Loc",
+                  "type": "entrance",
+                  "object_type": "location",
+                  "parent_id": "2371f087-f8f4-41b1-adee-db33d6b54b6c"
+                }
+              ]
+            }

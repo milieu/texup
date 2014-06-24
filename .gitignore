@@ -14,6 +14,9 @@ dist
 /RUNNING_PID
 /.settings
 
+*.swn
+*.swo
+
 # Project generated files
 *.png*
 template.log
