@@ -3,6 +3,23 @@ $(document).ready(function () {
 
     $('#endpoints').remove();
     
+    function setupSliding(linkHashes, sectionHash, theHash, hideSectionHash, otherHash) {
+        var section = $(sectionHash);
+
+        linkHashes.forEach( function(val,idx,arr) {
+            $(val).click(function (e) {
+                section.slideDown();
+                this.href = theHash;
+            });
+        });
+        /*
+        $(hideSectionHash).click(function (e) {
+            location.hash = otherHash;
+            section.slideUp();
+        });
+        */
+    }
+
     // Things to add to ToC
     var moreToC = [
         "<li><a href=\"#overview\">Overview</a></li>",
@@ -28,9 +45,41 @@ $(document).ready(function () {
     $('#toc').prepend(moreToC.join(""));
     
     var toc_m = $('#toc_measures');
+    /*/ for animating ToC    
+    var subsubToC = $('.subsubToC');
+    subsubToC.hide();
+    toc_m.on('mouseenter', function(e) {
+        subsubToC.slideDown();
+    });
+    toc_m.on('mouseleave', function(e) {
+        subsubToC.slideUp();
+    }); //  */
+    
+    /*/ for ToC#Measures revealing #measures
+    toc_m.on('click', function(e) {        
+        toc_m.unbind('mouseleave');
+        $('#measures').slideDown("slow");
+    }); // */ 
     
     // remove #toc setup html
     $('.chapterWrapper').last().remove();
 
+    /*/ for parameter links revealing #measures
+    var queryHash = "#query";
+    setupSliding(['.a_measures'   ], '#measures'   , '#measures'   , '#ah_measures'   , queryHash);
+    setupSliding(['.a_groupings'  ], '#groupings'  , '#groupings'  , '#ah_groupings'  , queryHash);
+    setupSliding(['.a_date_ranges'], '#date_ranges', '#date_ranges', '#ah_date_ranges', queryHash);
+    setupSliding(['.a_time_ranges'], '#time_ranges', '#time_ranges', '#ah_time_ranges', queryHash);
+
+/*
+    $('.my-affix').affix({
+        offset: {
+            top: 100,
+            bottom: function () {
+                return (this.bottom = $('#fake_footer').outerHeight(true))
+            }
+        }
+    });
+*/
 
 });

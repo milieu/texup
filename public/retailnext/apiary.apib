@@ -72,6 +72,732 @@ Retrieves metrics using the provided query parameters.
 
 ## Query [GET]
 
+<div class="paramsTableWrap">
+<script>
+function hopefullyGlobal(){};
+</script>
+
+  <table class="paramsTable">
+    <caption>Parameters</caption>
+    <colgroup>
+      <col span="1" style="width: 13%;" />
+      <col span="1" style="width: 47%;" />
+      <col span="1" style="width: 40%;" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>api_key</td>
+        <td>
+          <p>The API Key.</p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>myApiKey</samp> 
+        </td>
+      </tr>
+      <tr>
+        <td>row_limit</td>
+        <td>
+          <p>The maximum number of rows to return.</p>
+        </td>
+        <td>integer, optional
+          <br>example: <samp>5000</samp>
+          <br>default: <samp>1000</samp>
+          <br>constraint: <code>1 <= row_limit <= 33000</code>
+        </td>
+      </tr>
+      <tr>
+        <td>primary_currency</td>
+        <td>
+          <p>The code of the currency to return sales data back in in the
+             case where there are conflicts (multiple currencies) in the dataset.
+          </p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>EUR</samp>
+        </td>
+      </tr>
+      <tr>
+        <td>fallback_currency</td>
+        <td>
+          <p>The code of the currency to return sales data back in in the
+             case where there are conflicts (multiple currencies) in the dataset
+             and no primary currency is specified or conversion to the primary
+             currency failed (for example, when exchange rates are unknown).
+          </p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>EUR</samp>
+          <br>default: <samp>USD</samp> 
+        </td>
+      </tr>
+      <tr>
+        <td>calendar_type</td>
+        <td>
+          <p>The calendar type to use in queries.</p>
+        </td>
+        <td>enum, optional
+          <br>example: <samp>retail</samp>
+          <br>possible values:
+          <br>
+          <span class="forceCode">gregorian</span> 
+          <span class="forceCode">retail</span> 
+          <br>default: <samp>gregorian</samp>
+        </td>
+      </tr>
+      <tr>
+        <td>location_ids</td>
+        <td>
+          <p>Filter by specific location ids.</p>
+          <p>Note that <code>corp</code> is an alias for the id of the hosting server.</p>
+        </td>
+        <td>string, optional
+          <br>example:
+          <br>&nbsp;&nbsp;<samp>66b64d81-73da-4aca-83e8-cf14740a64b4</samp>
+          <br>default: <samp>corp</samp> 
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#measures">measures</a></td>
+        <td>
+          <p>The measures to query.</a>
+          </p>
+        </td>
+        <td>string, required
+          <br>example: <samp>sales;traffic+subtype=out</samp>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#groupings">groupings</a></td>
+        <td>
+          <p>Specifies how to group the output.</p>
+        </td>
+        <td>string, required
+          <br>example: <samp>location;year_month+verbose=true</samp>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#date_ranges">date_ranges</a></td>
+        <td>
+          <p>Filter with date ranges.</p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>y2014</samp>
+          <br>default: <samp>previous2weeks</samp>
+          <br>constraint: <code>date_ranges >= 2009</code>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#time_ranges">time_ranges</a></td>
+        <td>
+          <p>Filter with time ranges.
+          </p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>0630-1800;store_hours</samp>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="measures" class="subQuery">
+<div class="linktitle">
+  <a id="ah_measures" class="subanchor" name="measures"></a>Measures
+</div>
+<div class="paramsTableWrap">
+  <table class="paramsTable">
+    <caption>Parameters</caption>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>alias</td>
+        <td>
+          <p>Names the corresponding measure field in the output JSON.</p>
+          <p>Field names match their corresponding id by default, however,
+             an alias must be specified if an id is used more than
+             once since all output fields must be unique.</p>
+        </td>
+        <td>string, optional
+          <br>example: <samp>traffic_in</samp> 
+        </td>
+      </tr>
+      <tr>
+        <td>verbose</td>
+        <td>
+          <p>Adds</a> the <code>validity</code> field to the JSON output.
+          </p>
+        </td>
+        <td>boolean, optional
+          <br>example: <samp>true</samp> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<div class="paramsTableWrap">
+  <table class="paramsTable">
+    <colgroup>
+      <col span="1" class="oneline">
+      <col span="2" class="oneline">
+    </colgroup>
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <th align="center">Measure ID</th>
+        <th colspan="2">Description &amp; Attributes</th>
+      </tr>
+    </tbody>
+    <tbody>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="trafficexposure"></a>Traffic / Exposure</th>
+    </tr>
+    <tr>
+      <td align="center" class="oneline"><div title="M000">traffic</div></td>
+      <td colspan="2">Number of people detected by video to have walked in or out of the store 
+        <table class="subTable"><tbody><tr><th class="oneline">Name</th><th style="width:18%;">Description</th><th>Details</th></tr><tr><td>subtype</td><td>Type of traffic counts to return</td><td>enum, required<br>example: <samp>out</samp><br>possible values:<p/>
+          <span class="forceCode marginLpointfive">in</span>
+          <span class="forceCode">out</span>
+          <span class="forceCode">all_in</span>
+          <span class="forceCode">all_out</span>
+          <span class="forceCode">staff_in</span>
+          <span class="forceCode">staff_out</span>
+        </td></tr></tbody></table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M089">unique_traffic<a href="javascript:void(0);" title="Shortcut for unique_mobile_device_traffic+location=store"><sup>1</sup></div></td>
+      <td colspan="2">
+          <p>Number of individual shoppers who enter the store (each person is counted only once for the date range selected)</p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M114">exposure_rate</div></td>
+      <td colspan="2">Percentage of shoppers who walk by a specific location as compared to the total store traffic</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M062">passby_traffic</div></td>
+      <td colspan="2">Number of people who walk by the store, including those who enter</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M088">unique_passby_traffic<a href="javascript:void(0);" title="Shortcut for unique_mobile_device_traffic+location=passby"><sup>1</sup></div></td>
+      <td colspan="2">
+        <p>Number of individual shoppers who walk by the store (each person is counted only once for the date range selected)</p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M063">capture_rate</div></td>
+      <td colspan="2">Percentage of people passing by the store who enter the store</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M061">mobile_device_detection_rate</div></td>
+      <td colspan="2">Percentage of shoppers who enter the store with a detected mobile device</td>
+    </tr>
+    <tr>
+      <td align="center">
+        <div title="M080">mobile_device_traffic</div>
+      </td>
+      <td style="width:20%;">Number of mobile devices detected in the specified time period.</td>
+      <td rowspan="2" style="width:50%;">
+        <table class="subTable">
+          <tbody>
+            <tr>
+              <th class="oneline">Name</th>
+              <th>Description</th>
+              <th>Details</th>
+            </tr>
+            <tr>
+              <td>location</td>
+              <td>Whether to return in-store visitor counts or passing visitor counts</td>
+              <td>enum, required
+                <br>example: <samp>passby</samp>
+                <br>possible values: <span class="forceCode marginLpointfive">store</span><span class="forceCode">passby</span>
+              </td>
+            </tr>
+            <tr>
+              <td>is_repeat</td>
+              <td>If <code>true</code>, returns the mobile device counts of returning customers.</td>
+              <td>boolean, optional
+                <br>example: <samp>true</samp>
+                <br>default: <samp>null</samp> (Both)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <div title="M081">unique_mobile_device_traffic</div>
+      </td>
+      <td>Number of unique mobile devices detected in the specified time period.</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="engagement"></a>Engagement</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M021">dwells</div></td>
+      <td colspan="2">Number of shoppers who stand in a specified zone for longer than a defined minimum amount of time</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M022">avg_dwell_time</div></td>
+      <td colspan="2">Average amount of time shoppers stand in a specified dwell zone</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M026">engagement_rate</div></td>
+      <td colspan="2">Percentage of shoppers walking by a location who stop at that location</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M064">visit_duration</div></td>
+      <td colspan="2">Average amount of time shoppers spend inside the store</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="conversion"></a>Conversion</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M025">conversion_rate</div></td>
+      <td colspan="2">The percentage of shoppers visiting the store who make a purchase</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M027">dwell_conversion_rate</div></td>
+      <td colspan="2">Percentage of shoppers who stop in a specified dwell zone and make a purchase</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M055">shopper_yield</div></td>
+      <td colspan="2">Average sale amount for each shopper entering the store in a specified period</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="sales"></a>Sales</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M009">sales</div></td>
+      <td colspan="2">Net sales for a specified period</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M007">all_transactions</div></td>
+      <td colspan="2">Total number of sales &amp; return transactions for a specified period 
+        <table class="subTable"><tbody>
+          <tr>
+            <th class="oneline">Name</th><th>Description</th><th>Details</th>
+          </tr>
+          <tr>
+            <td>transaction_status</td><td>What transactions to return based on completion status.</td>
+            <td>enum,optional
+              <br>example: <samp>voided</samp>
+              <br>possible values:
+              <br>
+              <span class="forceCode marginLpointfive">normal</span>
+              <span class="forceCode">voided</span>
+              <span class="forceCode">post_voided</span>
+              <br>default: <samp>normal</samp>
+            </td>
+          </tr>
+          <tr>
+          <td>transaction_type</td>
+          <td>What types of transactions to return.</td>
+          <td>enum, optional
+            <br>example: <samp>sale</samp>
+            <br>possible values:
+            <br>
+            <span class="forceCode marginLpointfive">sale</span>
+            <span class="forceCode">return_item</span>
+            <span class="forceCode">all</span>
+            <br>default: <samp>all</samp>
+          </td></tr></tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M013">avg_transaction_value</div></td>
+      <td colspan="2">Average sales amount spent per transaction</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M011">avg_items_per_transaction</div></td>
+      <td colspan="2">Average number of items purchased per transaction</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M054">sales_per_sq_unit</div></td>
+      <td colspan="2">Net sales per square unit of space</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M053">transactions_per_sq_unit</div></td>
+      <td colspan="2">Total number of sales transactions per square unit of space</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="shopperbase"></a>ShopperBase</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M111">demographics</div></td>
+      <td colspan="2">Percentage of shoppers matching the specified demographic filters 
+        <table class="subTable"><tbody>
+          <tr>
+            <th class="oneline">Name</th>
+            <th>Description</th><th>Details</th>
+          </tr>
+          <tr>
+            <td>gender</td>
+            <td>What gender to filter by.</td>
+            <td>enum,optional
+              <br>example: <samp>female</samp>
+              <br>possible values:
+              <br>
+              <span class="forceCode marginLpointfive">male</span>
+              <span class="forceCode">female</span>
+            </td>
+          </tr>
+          <tr>
+            <td>age_range_ids<sup><a href="javascript:void(0);">*</a></sup></td>
+            <td>Which age ranges to filter by.</td>
+            <td>integer(s), optional
+              <br>example: <samp>100,210</samp>
+            </td>
+          </tr>
+        </tbody></table>
+        <p><sub><a class="anchor" name="age_range_ids_note"></a><a>*</a> Request-specified age ranges (e.g. "13-19") are not currently supported. Refer to <a href="#age_ranges">Age Ranges</a> on how to retrieve UI-defined range ids</sub></p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M113">avg_age</div></td>
+      <td colspan="2">Average age of shoppers who enter the store</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M066">new_shopper_percentage</div></td>
+      <td colspan="2">Percentage of shoppers visiting the store for the first time</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M071">visit_frequency</div></td>
+      <td colspan="2">Average number of times a shopper enters the store within a specified time period</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M102">local_percentage<a href="javascript:void(0);" title="Requires AMEX data license"><sup>2</sup></a></div></td>
+      <td colspan="2">Percentage of customers who live in the same city as the store</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M103">nonlocal_percentage<a href="javascript:void(0);" title="Requires AMEX data license"><sup>2</sup></a></div></td>
+      <td colspan="2">Percentage of customers who live in a different city than the store</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M101">domestic_percentage<a href="javascript:void(0);" title="Requires AMEX data license"><sup>2</sup></a></div></td>
+      <td colspan="2">Percentage of customers who live in the same country as the store</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M104">international_percentage<a href="javascript:void(0);" title="Requires AMEX data license"><sup>2</sup></a></div></td>
+      <td colspan="2">Percentage of customers who live in a different country than the store</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="staffing"></a>Staffing</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M056">staff_count</div></td>
+      <td colspan="2">Number of people on staff for a specified period (measured in 15-minute increments)</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M038">labor_hours</div></td>
+      <td colspan="2">Total number of hours worked by staff members</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M036">shopper_to_staff_ratio</div></td>
+      <td colspan="2">Ratio of shoppers who entered the store to staff members</td>
+    </tr>
+    <tr>
+      <td align="center"><div title="M051">staff_productivity</div></td>
+      <td colspan="2">Sales per staff hour</td>
+    </tr>
+    <tr class="darken">
+      <th align="center" colspan="3"><a class="subsubanchor" name="queue"></a>Queue</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M072">queue_wait_time</div></td>
+      <td colspan="2">Average time required for a shopper to pass through the queue area</td>
+    </tr>
+    <tr class="darken">
+      <th colspan="3"><a class="subsubanchor" name="other"></a>Other</th>
+    </tr>
+    <tr>
+      <td align="center"><div title="M006">variance</div></td>
+      <td colspan="2">Percentage difference between the number of people entering a store and the number leaving it each day during store hours.</td>
+    </tr>
+    </tbody>
+  </table>
+  <sub><a class="anchor" name="unique_traffic_node"></a><a>1.</a> Shortcut measure that can be derived from one or more other measures</sub>
+  <br>
+  <sub><a class="anchor" name="AMEX"></a><a>2.</a> Requires AMEX data license</sub>
+</div>
+
+
+</div>
+
+<div id="groupings" class="subQuery">
+  <div class="linktitle">
+    <a id="ah_groupings" class="subanchor" name="groupings"></a>Groupings
+  </div>
+  <div class="paramsTableWrap">
+    <table class="paramsTable">
+      <caption>Attributes</caption>
+      <colgroup>
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 75%;">
+        <col span="1" style="width: 15%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>alias</td>
+          <td>
+            <p>Names the corresponding grouping field in the output JSON.</p>
+            <p>Field names match their corresponding id by default, however,
+               an alias must be specified if an id is used more than
+               once since all output fields must be unique.</p>
+          </td>
+          <td>string, optional
+            <br>example: <samp>loc_id</samp> 
+          </td>
+        </tr>
+        <tr>
+          <td>verbose</td>
+          <td>
+            <p>For time-based groupings, the fields <code>range_start</code>, <code>range_end</code>
+               and <code>is_complete</code> are added to the JSON output.</p>
+          </td>
+          <td>boolean, optional
+            <br>example: <samp>true</samp> 
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  
+  <div class="paramsTableWrap">
+    <table class="paramsTable"><tbody>
+      <tr>
+        <th style="text-align:center;">Grouping ID</th>
+        <th style="text-align:center;" colspan="2">Output Format</th>
+        <th style="">Attributes/Description</th>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="G001">location</div></td>
+        <td style="text-align:center;" colspan="2"><a href="http://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a></td>
+        <td style="">Group by location</td>
+      </tr>
+      <tr>
+        <th class="darken" style="text-align:center;"><em>Time: Size-based</em></th>
+        <th class="darken" style="text-align:center;">Unit</th>
+        <th class="darken" style="text-align:center;">Start / end</th>
+        <td style="" rowspan="10">
+          <p>Group by the specified time unit.</p>
+          <table class="subTable">
+            <tbody>
+              <tr><th class="oneline">Name</th><th>Description</th><th>Details</th></tr>
+              <tr><td>unit_size</td><td>How many time units to group by</td><td>integer, optional<br>example: <samp>30</samp><br>default: <samp>1</samp></td></tr>
+            </tbody>
+          </table>
+          <p>Multiple time units are grouped with the largest unit first; e.g.: <code>year_month_day</code> groups by year, then month, then day.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT17">hour</div></td>
+        <td style="text-align:center;">HH</td>
+        <td style="text-align:center;">HH:mm:ss</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT19">hour_minute</div></td>
+        <td style="text-align:center;">HH:mm:ss</td>
+        <td style="text-align:center;">HH:mm:ss</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT05">month</div></td>
+        <td style="text-align:center;"><div title="01 to 12">MM</div></td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT02">year</div></td>
+        <td style="text-align:center;">yyyy</td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT10">year_month_day</div></td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT21">year_month_day_hour_minute</div></td>
+        <td class="oneline" style="text-align:center;">yyyy-MM-dd'T'HH:mm:ss</td>
+        <td class="oneline" style="text-align:center;">yyyy-MM-dd'T'HH:mm:ss</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT09">year_month</div></td>
+        <td style="text-align:center;">yyyy-MM</td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+    
+      <tr>
+        <td style="text-align:center;"><div title="GT20">minute</div></td>
+        <td style="text-align:center;">mm</td>
+        <td style="text-align:center;">mm:ss-dd</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT07">year_week</div></td>
+        <td style="text-align:center;">yyyy-'W'ww</td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+      <tr style="height:.5em;">
+        <th class="darken" style="text-align:center;"><em>Time: Value-based</em></th>
+        <th class="darken" style="text-align:center;">Unit</th>
+        <th class="darken" style="text-align:center;">Start / end</th>
+        <td class="subTable" rowspan="3">Group by the specified time unit.
+          <table class="subTable"><tbody>
+            <tr><th>Name</th><th>Description</th><th>Details</th></tr>
+            <tr><td>values</td><td>Which days of the week or weeks of the year to group by.</td><td>integer(s), required<br>example: <samp>1,3,5</samp></td></tr>
+          </tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT15">day_of_week</div></td>
+        <td style="text-align:center;"><div title="w=1 to 7">'-W-'w</div></td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><div title="GT12">week_of_year</div></td>
+        <td style="text-align:center;"><div title="ww=01 to 53">'-W'ww</div></td>
+        <td style="text-align:center;">yyyy-MM-dd</td>
+      </tr>
+    </tbody></table>
+  </div>
+</div>
+
+<div id="date_ranges" class="subQuery">
+<div class="linktitle">
+  <a id="ah_date_ranges" class="subanchor" name="date_ranges"></a>Date Ranges
+</div>
+  <div class="paramsTableWrap">
+    <table class="paramsTable">
+      <caption>Parameters</caption>
+      <thead>
+        <tr>
+          <th class="oneline">Name</th>
+          <th>Description</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>compare_yoy</td>
+          <td class="oneline">
+            <p>Adds the same range from the previous year</p>
+          </td>
+          <td>boolean, optional
+            <br>example: <samp>true</samp>
+            <br>default: <samp>false</samp>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <br>
+  
+  <div class="paramsTableWrap">
+    <table class="paramsTable">
+      <tbody><tr>
+        <th>Date Range ID / <em>Type</em></th>
+        <th>Attributes / Descriptions</th>
+      </tr>
+      <tr class="">
+        <th><em><div title="DR48">absolute</div></em></th>
+        <td>Retrieves data for a specific year, month of year, or week of year, e.g. <code>y2014m04</code>.
+            <p>Accepted formats: <code>'y'yyyy</code>, <code>'y'yyyy'm'MM</code>, <code>'y'yyyy'w'ww</code>.</p></td>
+      </tr>
+      <tr>
+        <th><em><div title="DR54">specified</div></em></th>
+        <td>Filter by specified date ranges, e.g. <code>20140430-20140531</code></td>
+      </tr>
+      <tr class="">
+        <td><div title="DR01">current<code class="forceCode">time_unit</code></td></td>
+        <td rowspan="2" title="TODO description for both current and previous">
+          Date range relative to the current date, e.g. <code>previous2weeks</code> or <code>currentday</code>.
+          <table class="subTable">
+            <tbody>
+              <tr>
+                <th class="oneline">Name</th>
+                <th>Description</th>
+                <th>Details</th>
+              </tr>
+              <tr>
+                <td><em>time_unit</em></td>
+                <td>The time unit used to determine the range.</td>
+                <td>enum, required
+                   <br>example: <samp>months</samp><br>
+                   possible values:
+                   <br>
+                   <span class="forceCode">day(s)</span> 
+                   <span class="forceCode">week(s)</span> 
+                   <span class="forceCode">month(s)</span> 
+                   <span class="forceCode">year(s)</span> 
+                </td>
+              </tr>
+              <tr>
+                <td><em>value</em></td>
+                <td>integer, optional
+                <td>The number of <code>time_units</code> to go back to determine the start date.</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr class="">
+        <td><div title="DR00">previous<code class="forceCode">value</code><code class="forceCode">time_unit</code></td></td>
+      </tr>
+    </tbody></table>
+  </div>
+</div>
+
+<div id="time_ranges" class="subQuery">
+<div class="linktitle">
+  <a id="ah_time_ranges" class="subanchor" name="time_ranges"></a>Time Ranges
+</div>
+  <div class="paramsTableWrap">
+    <table class="paramsTable">
+      <tbody><tr>
+        <th>Time Range ID / <em>Type</em></th>
+        <th>Descriptions</th>
+      </tr>
+      <tr>
+        <td><div title="TR00">store_hours</div></td>
+        <td>Retrieve only the data that falls within store hours.</td>
+      </tr>
+      <tr>
+        <th><div title="TR01"><em>specified</em></div></th>
+        <td>Retrieve only the data that falls within the specified time range, e.g. <code>0800-2200</code> for 8am - 10pm.</td>
+      </tr>
+    </tbody></table>
+  </div>
+</div>
+
+<div id="fake_footer"></div>
+
 + Request 
         
     + Headers
@@ -112,7 +838,92 @@ Retrieves metrics using the provided query parameters.
 
 Searches for locations matching the specified filters. 
 
-
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Parameters</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>api_key</td>
+                <td>
+                    <p>The API Key.</p>
+                </td>
+                <td>string, optional
+                    <br>example: <samp>myApiKey</samp> 
+                </td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>
+                    <p>Filter locations whose id matches the specified <a href="http://www.postgresql.org/docs/9.3/static/functions-matching.html">pattern</a>.</p>
+                </td>
+                <td>string, optional
+                    <br>example: <samp>0000-0000-0000-0001</samp> 
+                </td>
+            </tr>
+            <tr>
+                <td>parent_id</td>
+                <td>
+                    <p>Filter locations whose parent matches the specified pattern.</p>
+                </td>
+                <td>string, optional
+                    <br>example: <samp>0000-0000-0000-0001</samp> 
+                </td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>
+                    <p>Filter locations whose name matches the specified pattern.</p>
+                </td>
+                <td>string, optional
+                    <br>example: <samp>Front%</samp> 
+                </td>
+            </tr>
+            <tr>
+                <td>type</td>
+                <td>
+                    <p>Filter locations by location type.</p>
+                </td>
+                <td>enum, optional
+                    <br>example: <samp>entrance</samp><br>
+                    possible values:
+                    <br>
+                    <span class="forceCode">aisle</span> 
+                    <span class="forceCode">aisle_group</span> 
+                    <span class="forceCode">area</span> 
+                    <span class="forceCode">checkout_area</span> 
+                    <span class="forceCode">display</span> 
+                    <span class="forceCode">display_group</span> 
+                    <span class="forceCode">entrance</span> 
+                    <span class="forceCode">other</span> 
+                    <span class="forceCode">queue_group</span> 
+                    <span class="forceCode">queue</span> 
+                    <span class="forceCode">region</span> 
+                    <span class="forceCode">store</span>
+                </td>
+            </tr>
+            <tr>
+                <td>object_type</td>
+                <td>
+                    <p>Filter locations by object type.</p>
+                </td>
+                <td>enum, optional
+                    <br>example: <samp>location</samp><br>
+                    possible values:
+                    <br>
+                    <span class="forceCode">location</span>
+                    <span class="forceCode">server</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 + Response 200 (application/json)
 
